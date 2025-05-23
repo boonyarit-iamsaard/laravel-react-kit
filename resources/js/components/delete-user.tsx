@@ -1,5 +1,5 @@
 import { useForm } from '@inertiajs/react';
-import type { FormEventHandler} from 'react';
+import type { FormEventHandler } from 'react';
 import { useRef } from 'react';
 
 import InputError from '@/components/input-error';
