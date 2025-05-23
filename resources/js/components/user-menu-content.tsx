@@ -1,21 +1,16 @@
 import { DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator } from '@/components/ui/dropdown-menu';
 import { UserInfo } from '@/components/user-info';
 import { useMobileNavigation } from '@/hooks/use-mobile-navigation';
-import { type User } from '@/types';
-import { Link, router } from '@inertiajs/react';
-import { LogOut, Settings } from 'lucide-react';
+import type { User } from '@/types';
+import { Link } from '@inertiajs/react';
+import { LayoutGridIcon, LogOutIcon, SettingsIcon } from 'lucide-react';
 
-interface UserMenuContentProps {
+type UserMenuContentProps = {
     user: User;
-}
+};
 
 export function UserMenuContent({ user }: UserMenuContentProps) {
     const cleanup = useMobileNavigation();
-
-    const handleLogout = () => {
-        cleanup();
-        router.flushAll();
-    };
 
     return (
         <>
@@ -27,16 +22,22 @@ export function UserMenuContent({ user }: UserMenuContentProps) {
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
                 <DropdownMenuItem asChild>
+                    <Link className="block w-full" href={route('admin.dashboard')} as="button" prefetch onClick={cleanup}>
+                        <LayoutGridIcon className="mr-2" />
+                        Dashboard
+                    </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
                     <Link className="block w-full" href={route('profile.edit')} as="button" prefetch onClick={cleanup}>
-                        <Settings className="mr-2" />
+                        <SettingsIcon className="mr-2" />
                         Settings
                     </Link>
                 </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem asChild>
-                <Link className="block w-full" method="post" href={route('logout')} as="button" onClick={handleLogout}>
-                    <LogOut className="mr-2" />
+                <Link className="block w-full" method="post" href={route('logout')} as="button" onClick={cleanup}>
+                    <LogOutIcon className="mr-2" />
                     Log out
                 </Link>
             </DropdownMenuItem>

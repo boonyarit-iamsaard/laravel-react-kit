@@ -5,20 +5,30 @@ import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, Sid
 import type { SharedData } from '@/types';
 import { type NavItem } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
-import { BookOpenIcon } from 'lucide-react';
+import { LayoutDashboardIcon, SettingsIcon, UsersIcon } from 'lucide-react';
 import AppLogo from './app-logo';
 
-const mainNavItems: NavItem[] = [
+const adminNavItems: NavItem[] = [
     {
-        title: 'About',
-        href: '/about',
-        icon: BookOpenIcon,
+        title: 'Dashboard',
+        href: '/admin',
+        icon: LayoutDashboardIcon,
+    },
+    {
+        title: 'Users',
+        href: '/admin/users',
+        icon: UsersIcon,
+    },
+    {
+        title: 'Settings',
+        href: '/admin/settings',
+        icon: SettingsIcon,
     },
 ];
 
 const footerNavItems: NavItem[] = [];
 
-export function AppSidebar() {
+export function AdminSidebar() {
     const props = usePage<SharedData>();
     const { auth } = props.props;
 
@@ -37,7 +47,7 @@ export function AppSidebar() {
             </SidebarHeader>
 
             <SidebarContent>
-                <NavMain items={mainNavItems} />
+                <NavMain items={adminNavItems} />
             </SidebarContent>
 
             <SidebarFooter>
