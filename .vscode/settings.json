@@ -1,7 +1,10 @@
 {
+    "containers.containerClient": "com.microsoft.visualstudio.containers.podman",
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
     "laravel-pint.enable": true,
+    "php.executablePath": "/usr/bin/php",
+    "php.validate.executablePath": "/usr/bin/php",
     "[php]": {
         "editor.defaultFormatter": "open-southeners.laravel-pint"
     }

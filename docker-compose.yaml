@@ -1,7 +1,7 @@
 services:
   mailpit:
     container_name: starter-kit-mailpit
-    image: axllent/mailpit
+    image: docker.io/axllent/mailpit
     restart: unless-stopped
     volumes:
       - mailpitdata:/data
@@ -18,7 +18,7 @@ services:
 
   mysql:
     container_name: starter-kit-mysql
-    image: mysql:8.0
+    image: docker.io/mysql:8.0
     restart: unless-stopped
     volumes:
       - mysqldata:/var/lib/mysql
