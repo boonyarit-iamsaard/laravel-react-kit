@@ -1,0 +1,17 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+    - vendor/nesbot/carbon/extension.neon
+
+parameters:
+    scanFiles:
+        - _ide_helper_models.php
+
+    paths:
+        - app/
+
+    level: 6
+
+    excludePaths:
+        - _ide_helper_models.php
+        - _ide_helper.php
+        - .phpstorm.meta.php

@@ -16,7 +16,9 @@
         "tightenco/ziggy": "^2.4"
     },
     "require-dev": {
+        "barryvdh/laravel-ide-helper": "^3.6",
         "fakerphp/faker": "^1.23",
+        "larastan/larastan": "^3.0",
         "laravel/pail": "^1.2.2",
         "laravel/pint": "^1.18",
         "laravel/sail": "^1.41",
@@ -68,13 +70,15 @@
         "test:format": "npm run format:check",
         "test:lint": "npm run lint:check",
         "test:pest": "pest",
+        "test:phpstan": "phpstan analyse --memory-limit=2G",
         "test:pint": "pint --test",
-        "test:typecheck": "npm run typecheck",
+        "test:typescript": "npm run typecheck",
         "test:static": [
             "@test:format",
             "@test:lint",
+            "@test:typescript",
             "@test:pint",
-            "@test:typecheck"
+            "@test:phpstan"
         ],
         "test": [
             "@test:static",
