@@ -7,7 +7,6 @@ on:
       - main
   pull_request:
     branches:
-      - develop
       - main
 
 jobs:
@@ -47,4 +46,4 @@ jobs:
         run: php artisan key:generate
 
       - name: Tests
-        run: ./vendor/bin/pest
+        run: composer test
