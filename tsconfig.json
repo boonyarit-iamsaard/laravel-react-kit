@@ -1,0 +1,34 @@
+{
+    "compilerOptions": {
+        /* Basic Options */
+        "allowJs": true,
+        "esModuleInterop": true,
+        "isolatedModules": true,
+        "moduleDetection": "force",
+        "resolveJsonModule": false,
+        "skipLibCheck": true,
+        "target": "ESNext",
+        "verbatimModuleSyntax": true,
+
+        /* Strict Type-Checking Options */
+        "forceConsistentCasingInFileNames": true,
+        "noImplicitAny": true,
+        "noImplicitOverride": false,
+        "noUncheckedIndexedAccess": true,
+        "strict": true,
+
+        /* Module Resolution Options */
+        "jsx": "react-jsx",
+        "module": "ESNext",
+        "moduleResolution": "bundler",
+        "noEmit": true,
+
+        /* Paths */
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["./resources/js/*"],
+            "ziggy-js": ["./vendor/tightenco/ziggy"]
+        }
+    },
+    "include": ["resources/js/**/*.ts", "resources/js/**/*.d.ts", "resources/js/**/*.tsx", "*.config.ts", "*.config.js"]
+}
