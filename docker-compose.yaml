@@ -1,0 +1,44 @@
+name: laravel-react-kit
+
+services:
+    postgres:
+        container_name: laravel-react-kit-postgres
+        image: docker.io/postgres:15-alpine
+        ports:
+            - '0.0.0.0:${DB_PORT:-5432}:5432'
+        volumes:
+            - pgdata:/var/lib/postgresql/data
+        environment:
+            POSTGRES_DB: ${DB_DATABASE:-laravel-react-kit}
+            POSTGRES_USER: ${DB_USERNAME:-laravel-react-kit}
+            POSTGRES_PASSWORD: ${DB_PASSWORD:-laravel-react-kit}
+        restart: unless-stopped
+        networks:
+            - laravel-react-kit-network
+
+    mailpit:
+        container_name: laravel-react-kit-mailpit
+        image: docker.io/axllent/mailpit:latest
+        ports:
+            - '${FORWARD_MAILPIT_PORT:-1025}:1025'
+            - '${FORWARD_MAILPIT_UI_PORT:-8025}:8025'
+        restart: unless-stopped
+        volumes:
+            - mailpitdata:/data
+        environment:
+            MP_MAX_MESSAGES: 5000
+            MP_DATABASE: /data/mailpit.db
+            MP_SMTP_AUTH_ACCEPT_ANY: 1
+            MP_SMTP_AUTH_ALLOW_INSECURE: 1
+        networks:
+            - laravel-react-kit-network
+
+networks:
+    laravel-react-kit-network:
+        name: laravel-react-kit
+
+volumes:
+    pgdata:
+        name: laravel-react-kit-pgdata
+    mailpitdata:
+        name: laravel-react-kit-mailpitdata
