@@ -62,9 +62,23 @@
             "Composer\\Config::disableProcessTimeout",
             "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"php artisan inertia:start-ssr\" --names=server,queue,logs,ssr --kill-others"
         ],
+        "format:fix": "npm run format:fix",
+        "lint:fix": "npm run lint:fix",
+        "pint:fix": "pint",
+        "test:format": "npm run format:check",
+        "test:lint": "npm run lint:check",
+        "test:pest": "pest",
+        "test:pint": "pint --test",
+        "test:typecheck": "npm run typecheck",
+        "test:static": [
+            "@test:format",
+            "@test:lint",
+            "@test:pint",
+            "@test:typecheck"
+        ],
         "test": [
-            "@php artisan config:clear --ansi",
-            "@php artisan test"
+            "@test:static",
+            "@test:pest"
         ]
     },
     "extra": {
