@@ -17,6 +17,7 @@
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^3.6",
+        "driftingly/rector-laravel": "^2.0",
         "fakerphp/faker": "^1.23",
         "larastan/larastan": "^3.0",
         "laravel/pail": "^1.2.2",
@@ -67,18 +68,21 @@
         "format:fix": "npm run format:fix",
         "lint:fix": "npm run lint:fix",
         "pint:fix": "pint",
+        "rector:fix": "rector",
         "test:format": "npm run format:check",
         "test:lint": "npm run lint:check",
         "test:pest": "pest",
         "test:phpstan": "phpstan analyse --memory-limit=2G",
         "test:pint": "pint --test",
+        "test:rector": "rector process --dry-run",
         "test:typescript": "npm run typecheck",
         "test:static": [
             "@test:format",
             "@test:lint",
             "@test:typescript",
             "@test:pint",
-            "@test:phpstan"
+            "@test:phpstan",
+            "@test:rector"
         ],
         "test": [
             "@test:static",
